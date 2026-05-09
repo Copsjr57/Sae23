@@ -1,0 +1,76 @@
+Réalisation SAE 23
+TP Javascript
+
+Objectif :
+Découvrir la gestion d’événements et l’interaction utilisateur.
+
+Déroulée du TP :
+
+• Partie 1
+Créer un jeu “Devine le nombre” avec interaction utilisateur.
+
+• Partie 2
+Ajouter un compteur et un bouton Rejouer.
+
+Partie 1
+
+Créer une interface avec :
+- un champ input
+- un bouton “Jouer”
+- une zone d’affichage
+
+Exemple HTML :
+<input id="guess">
+<button id="play">Jouer</button>
+
+Générer un nombre aléatoire entre 1 et 10 avec Math.random().
+
+Exemple :
+let secret = Math.floor(Math.random() * 10) + 1;
+
+Ajouter un événement click sur le bouton avec addEventListener.
+
+Exemple :
+button.addEventListener("click", () => {});
+
+Récupérer la valeur de l’utilisateur et la convertir en nombre avec Number().
+
+Exemple :
+let value = Number(input.value);
+
+Comparer avec le nombre secret en utilisant des conditions :
+- trop petit
+- trop grand
+- gagné
+
+Exemple :
+if (value === secret) {
+console.log("Gagné");
+}
+
+Afficher le résultat dans la page.
+
+Partie 2
+
+Créer une variable pour compter les tentatives.
+
+Exemple :
+let essais = 0;
+
+Incrémenter cette variable à chaque clic.
+
+essais++;
+
+Ajouter un bouton “Rejouer”.
+
+Exemple :
+<button id="reset">Rejouer</button>
+
+Au clic :
+- générer un nouveau nombre
+- remettre le compteur à 0
+- vider le champ et les messages
+
+Résultat attendu :
+
+Le jeu indique si le nombre est correct ou non, affiche le nombre d’essais et peut être relancé avec le bouton Rejouer.
