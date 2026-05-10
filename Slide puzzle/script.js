@@ -39,9 +39,11 @@ function afficher() {
         var ligne=Math.floor((numero-1)/4);
         var colonne=(numero-1)%4;
         div.style.backgroundImage="url('"+imageUrl+"')";
-        div.style.backgroundSize="320px 320px";
-        div.style.backgroundPosition ="-"+(colonne*80)+"px -"+(ligne*80)+"px";
+        div.style.backgroundSize="400px 400px";
+        div.style.backgroundPosition ="-"+(colonne*100)+"px -"+(ligne*100)+"px";
+        div.style.backgroundRepeat="no-repeat";
         div.style.color="transparent";
+        div.innerHTML = '<span class="tile-label">'+cases[i]+'</span>';
       } else {
         div.innerHTML=cases[i];
       }
@@ -51,6 +53,14 @@ function afficher() {
   
   document.getElementById("moves").innerHTML=deplacements;
 }
+
+function updateModeButton() {
+  var button = document.getElementById("toggleMode");
+  if (button) {
+    button.textContent = modeImage ? "Revenir aux chiffres" : "Mode Image";
+  }
+}
+
 // Fonction pour déplacer une case
 function deplacer(index) {
   var indexVide=0;
@@ -105,6 +115,7 @@ function verifierVictoire() {
 function changerMode() {
   modeImage=!modeImage;
   afficher();
+  updateModeButton();
 }
-
 afficher();
+updateModeButton();
