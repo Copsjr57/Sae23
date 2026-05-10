@@ -1,47 +1,191 @@
 /* Styles pour le corps de la page */
 body {
-  font-family:Arial;
-  text-align:center;
-  background-color: black;
-  color: white; 
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Styles pour les titres */
 h1 {
   color: #ff6b6b; /* Rouge corail */
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Styles pour les paragraphes */
 p {
-  color: #4ecdc4; /* Turquoise */
+  color: #dce6ff;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Styles pour le formulaire de chargement */
+.upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin: 20px auto 10px;
+}
+
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.file-label:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.file-label input {
+  display: none;
+}
+
+.btn {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff8a65 0%, #ff6b6b 100%);
+  color: white;
+  box-shadow: 0 12px 24px rgba(255, 107, 107, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #4ecdc4 0%, #5dade2 100%);
+  color: white;
+  box-shadow: 0 12px 24px rgba(78, 205, 196, 0.25);
+}
+
+.btn-upload {
+  background: linear-gradient(135deg, #f4d03f 0%, #f39c12 100%);
+  color: #2b2b2b;
+  box-shadow: 0 12px 24px rgba(243, 156, 18, 0.25);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.image-preview {
+  width: min(420px, 90%);
+  margin: 0 auto 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.image-preview img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 260px;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.moves {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #f7f1ff;
 }
 
 /* Styles pour le conteneur du puzzle */
 #puzzle {
-  display:grid;
-  grid-template-columns:repeat(4,80px);
-  gap:5px;
-  justify-content:center;
-  margin:20px;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
 }
 
 /* Styles pour les cases du puzzle */
 .tile {
-  height:80px;
-  background-color: #add8e6; /* Light blue pour les cases */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  cursor:pointer;
-  color: #ff4500; /* Orange rouge pour les numéros */
+  position: relative;
+  overflow: hidden;
+  height: 100px;
+  background: linear-gradient(145deg, #add8e6, #87ceeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  user-select: none;
 }
+
+.tile-label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  min-width: 26px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
 /* Styles pour les cases au survol */
 .tile:hover {
-  background-color: #87ceeb; /* Sky blue*/
+  background: linear-gradient(145deg, #87ceeb, #4682b4);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
+
 /* Styles pour les cases vides */
 .empty {
-  background-color: #fffacd; /* Lemon */
-  cursor:default;
+  background: linear-gradient(145deg, #fffacd, #f0e68c);
+  cursor: default;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
