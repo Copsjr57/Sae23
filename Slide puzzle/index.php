@@ -24,15 +24,23 @@
   <h1>Slide Puzzle</h1>
   
   <!-- Formulaire pour uploader une image -->
-  <form method="post" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/jpeg, image/png">
-    <input type="submit" value="Charger l'image">
+  <form method="post" enctype="multipart/form-data" class="upload-form">
+    <label class="file-label">
+      <span>Choisir une image</span>
+      <input type="file" name="image" accept="image/jpeg, image/png">
+    </label>
+    <button type="submit" class="btn btn-upload">Charger l'image</button>
   </form>
+  <div class="image-preview">
+    <img src="<?php echo $imageUploadee;?>" alt="Aperçu de l'image du puzzle" id="preview-image">
+  </div>
   <!-- Interface du jeu de puzzle -->
   <div id="puzzle"></div>
-  <p>Déplacements: <span id="moves">0</span></p> 
-  <button onclick="melanger()">Mélanger</button>
-  <button onclick="changerMode()">Mode Image</button>
+  <p class="moves">Déplacements: <span id="moves">0</span></p>
+  <div class="controls">
+    <button type="button" class="btn btn-secondary" onclick="melanger()">Mélanger</button>
+    <button type="button" class="btn btn-primary" id="toggleMode" onclick="changerMode()">Mode Image</button>
+  </div>
   <script>
     // mélange les cases du puzzle et ajoute une case vide
     var cases=<?php
